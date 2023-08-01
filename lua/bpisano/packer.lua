@@ -138,8 +138,9 @@ return packer.startup(function(use)
 	-- Harpoon
 	use("ThePrimeagen/harpoon")
 
-	-- Flash
+	-- Motion
 	use("folke/flash.nvim")
+	use({ "phaazon/hop.nvim", branch = "v2" })
 
 	-- Game
 	use("ThePrimeagen/vim-be-good")

@@ -59,6 +59,21 @@ end
 
 local opts = {}
 
+-- local settings_files =
+-- 	vim.fn.globpath(vim.fn.stdpath("config") .. "/lua/bpisano/plugins/lsp/settings", "*.lua", false, true)
+-- for _, settings_file in pairs(settings_files) do
+-- 	local require_ok, conf_opts =
+-- 		pcall(require, "bpisano.plugins.lsp.settings." .. vim.fn.fnamemodify(settings_file, ":t:r"))
+-- 	if require_ok then
+-- 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
+-- 	end
+--
+-- 	local lspconfig_ok, lspconfig_server = pcall(require, "lspconfig." .. vim.fn.fnamemodify(settings_file, ":t:r"))
+-- 	if lspconfig_ok then
+-- 		lspconfig_server.setup(opts)
+-- 	end
+-- end
+
 for _, server in pairs(servers) do
 	opts = {
 		on_attach = require("bpisano.plugins.lsp.lspconfig").on_attach,

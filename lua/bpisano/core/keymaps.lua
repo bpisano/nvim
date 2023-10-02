@@ -54,4 +54,9 @@ keymap("v", ">", ">gv", opts)
 -- Move selected line / block of text in visual mode
 keymap("v", "∆", ":'<,'>m '>+1<CR>==gv", opts)
 keymap("v", "˚", ":'<,'>m '<-2<CR>==gv", opts)
+
+-- Move current line / block of text in normal mode
+keymap("n", "∆", ":m .+1<CR>==", opts)
+keymap("n", "˚", ":m .-2<CR>==", opts)
+
 keymap("v", "p", '"_dP', opts)

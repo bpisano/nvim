@@ -129,6 +129,9 @@ return packer.startup(function(use)
 	-- Indent blank lines
 	use("lukas-reineke/indent-blankline.nvim")
 
+	-- Rainbow delimiters
+	use("HiPhish/rainbow-delimiters.nvim")
+
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 

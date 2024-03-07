@@ -1,12 +1,11 @@
-local gitsigns_status, gitsigns = pcall(require, "gitsigns")
-if not gitsigns_status then
-	return
-end
-
-gitsigns.setup({
-	current_line_blame_opts = {
-		virt_text = true,
-		virt_text_pos = "eol",
-		delay = 1000,
-	},
-})
+return {
+  "lewis6991/gitsigns.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  opts = {
+    current_line_blame_opts = {
+      virt_text = true,
+      virt_text_pos = "eol",
+      delay = 1000,
+    },
+  },
+}

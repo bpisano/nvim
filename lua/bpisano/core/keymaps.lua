@@ -1,62 +1,53 @@
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 -- Normal --
 -- Registers
-keymap("n", "x", '"_x', opts)
+keymap.set("n", "x", '"_x', { desc = "Delete character under the cursor" })
 
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to the window on the left" })
+keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to the window below" })
+keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to the window above" })
+keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to the window on the right" })
 
 -- Resize window with arrows
-keymap("n", "<A-Down>", ":resize -2<CR>", opts)
-keymap("n", "<A-Up>", ":resize +2<CR>", opts)
-keymap("n", "<A-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<A-Right>", ":vertical resize +2<CR>", opts)
+keymap.set("n", "<A-Down>", ":resize -2<CR>", { desc = "Resize window down" })
+keymap.set("n", "<A-Up>", ":resize +2<CR>", { desc = "Resize window up" })
+keymap.set("n", "<A-Left>", ":vertical resize -2<CR>", { desc = "Resize window left" })
+keymap.set("n", "<A-Right>", ":vertical resize +2<CR>", { desc = "Resize window right" })
 
 -- Close windows
-keymap("n", "<C-q>", ":q<CR>", opts)
+keymap.set("n", "<C-q>", ":q<CR>", { desc = "Close window" })
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Previous buffer" })
 
 -- Search and replace
-keymap("n", "<leader>rr", ":%s/", { noremap = true })
-keymap("x", "<leader>rv", [["hy:%s/<C-r>h//g<left><left>]], { noremap = true })
+keymap.set("n", "<leader>rr", ":%s/", { desc = "Search and replace" })
+keymap.set("x", "<leader>rv", [["hy:%s/<C-r>h//g<left><left>]], { desc = "Search and replace in visual mode" })
 
 -- Insert
 -- Press jk fast to enter command mode
-keymap("i", "jk", "<ESC>", opts)
+keymap.set("i", "jk", "<ESC>", { desc = "Simulaneous to enter command mode" })
 
 -- Visual
 -- Better indenting
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap.set("v", "<", "<gv", { desc = "Indent left" })
+keymap.set("v", ">", ">gv", { desc = "Indent right" })
 
 -- Move selected line / block of text in visual mode
-keymap("v", "∆", ":'<,'>m '>+1<CR>==gv", opts)
-keymap("v", "˚", ":'<,'>m '<-2<CR>==gv", opts)
+keymap.set("v", "∆", ":'<,'>m '>+1<CR>==gv", { desc = "Move selected text down" })
+keymap.set("v", "˚", ":'<,'>m '<-2<CR>==gv", { desc = "Move selected text up" })
 
 -- Move current line / block of text in normal mode
-keymap("n", "∆", ":m .+1<CR>==", opts)
-keymap("n", "˚", ":m .-2<CR>==", opts)
+keymap.set("n", "∆", ":m .+1<CR>==", { desc = "Move current line down" })
+keymap.set("n", "˚", ":m .-2<CR>==", { desc = "Move current line up" })
 
-keymap("v", "p", '"_dP', opts)
+-- Copy to clipboard
+keymap.set("v", "p", '"_dP', { desc = "Paste without copying" })

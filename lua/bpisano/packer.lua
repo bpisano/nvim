@@ -86,7 +86,6 @@ return packer.startup(function(use)
 	-- Snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-	use("rafamadriz/friendly-snippets") -- useful snippets
 
 	-- Managing lsp servers
 	use("williamboman/mason.nvim")
@@ -95,10 +94,21 @@ return packer.startup(function(use)
 	-- Configuring lsp servers
 	use("neovim/nvim-lspconfig")
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-	use({ "glepnir/lspsaga.nvim", branch = "main" }) -- fast completion UI
+	use({
+		"nvimdev/lspsaga.nvim",
+		after = "nvim-lspconfig",
+		config = function()
+			require("lspsaga").setup({
+				ui = {
+					code_action = "",
+				},
+			})
+		end,
+	})
 	use("onsails/lspkind-nvim") -- beautiful autocompletion icons
 	use("jose-elias-alvarez/typescript.nvim")
 	use("OmniSharp/omnisharp-vim") -- Omnisharp
+	use("habamax/vim-godot") -- Godot
 
 	-- Formatting and linting
 	use("jose-elias-alvarez/null-ls.nvim")

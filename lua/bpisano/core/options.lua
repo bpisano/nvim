@@ -47,7 +47,11 @@ opt.signcolumn = "yes"
 opt.backspace = "indent,eol,start"
 
 -- Clipboard
-opt.clipboard:append("unnamedplus") 
+opt.clipboard:append("unnamedplus")
 
 -- Keyword
 opt.iskeyword:append("-")
+
+-- Spellcheck
+opt.spelllang = "en_us"
+opt.spell = true

@@ -10,8 +10,15 @@ return {
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
+    -- Show explorer on start
+    local function open_nvim_tree()
+      require("nvim-tree.api").tree.open()
+    end
+    vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
     -- configure nvim-tree
     nvimtree.setup({
+      sort_by = "case_sensitive",
       filters = {
         dotfiles = false,
       },
@@ -26,7 +33,7 @@ return {
       renderer = {
         highlight_opened_files = "name",
         group_empty = false,
-        indent_width = 1,
+        indent_width = 2,
         indent_markers = {
           enable = true,
           inline_arrows = false,

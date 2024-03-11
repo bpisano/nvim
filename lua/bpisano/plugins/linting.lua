@@ -26,5 +26,17 @@ return {
     vim.keymap.set("n", "<leader>l", function()
       lint.try_lint()
     end, { desc = "Trigger linting for current file" })
+
+    -- Autofix eslint_d on save
+    lint.linters.eslint_d.args = {
+      "--no-warn-ignored",
+      "--format",
+      "--fix",
+      "--stdin",
+      "--stdin-filename",
+      function()
+        return vim.api.nvim_buf_get_name(0)
+      end,
+    }
   end,
 }

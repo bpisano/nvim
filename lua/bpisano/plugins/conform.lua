@@ -12,8 +12,8 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettier", "eslint_d" },
-        typescript = { "prettier", "eslint_d" },
+        javascript = { "prettierd", "prettier", "eslint" },
+        typescript = { "prettierd", "prettier", "eslint" },
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
         svelte = { "prettier" },
@@ -28,6 +28,18 @@ return {
       },
       format_on_save = format_opts,
     })
+
+    --    conform.formatters.eslint_d.args = {
+    --      "--no-warn-ignored",
+    --      "--format",
+    --      "json",
+    --      "--stdin",
+    --      "--stdin-filename",
+    --      "--fix-to-stdout",
+    --      function()
+    --        vim.api.nvim_buf_get_name(0)
+    --      end,
+    --    }
 
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
       conform.format(format_opts)
